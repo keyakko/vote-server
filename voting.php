@@ -7,7 +7,7 @@ class voting {
 		$this->sql_init();
 		$this->post_vote();
 	}
-	
+
 	function sql_init() {
 		$this->sql = new sql();
 		$this->sql->init_sql();
@@ -15,15 +15,25 @@ class voting {
 	}
 
 	function post_vote() {
-		if (!empty($_REQUEST['vote'])) {
+		$req = htmlspecialchars($_REQUEST['vote']);
+		if (!empty($req)) {
 			$this->sql->sql_exec(
-				"INSERT INTO vote (name, created, ip) VALUES (?, NOW(), ?)",
-				"voting",
+				"SELECT count(*) AS cnt FROM user WHERE id = ?",
+				"user",
 				array(
-					$_REQUEST['vote'],
-					$_SERVER['REMOTE_ADDR']
+					$req
 				)
 			);
+			if ($this->sql->user->val[0]["cnt"] == 1) {
+				$this->sql->sql_exec(
+					"INSERT INTO vote (user_id, created, ip) VALUES (?, NOW(), ?)",
+					"voting",
+					array(
+						$req,
+						$_SERVER['REMOTE_ADDR']
+					)
+				);
+			}
 			if (!$this->sql->voting) {
 				echo "Error! Please retry send your request.  LINE:". __LINE__;
 				die;

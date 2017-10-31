@@ -5,7 +5,7 @@ import "net/url"
 import "net/http"
 
 func post_req(total *int) {
-	http.PostForm("http://localhost/voting.php", url.Values{"vote": {"fenecc"}})
+	http.PostForm("http://150.89.247.103/voting.php", url.Values{"vote": {"fenecc"}})
 	*total++
 	//fmt.Println(*total)
 }
