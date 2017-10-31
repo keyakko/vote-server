@@ -28,22 +28,28 @@ SQL;
 		$arr = array();
 		$label = array();
 		$color = array();
+		$data = array();
 		$colorset = array(
-			window.chartColors.red,
-			window.chartColors.orange,
-			window.chartColors.yellow,
-			window.chartColors.green,
-			window.chartColors.blue,
+			"rgba(255, 99, 132, 1)",
+			"rgba(255, 159, 64, 1)",
+			"rgba(255, 205, 86, 1)",
+			"rgba(75, 192, 192, 1)",
+			"rgba(54, 162, 235, 1)",
 		);
-		
+		$i = 0;
 		foreach ($this->sql->result->val as $val) {
-			$data = new stdClass();
+			$data[] = $val["total"];
 			$label[] = $val["name"];
-			$data->
+			$color[] = $colorset[($i++) % 5];
 			
 		}
 		
-		return $this->sql->result->val;
+		$ret = new stdClass();
+		$ret->data = $data;
+		$ret->label = $label;
+		$ret->color = $color;
+		
+		return $ret;
 	}
 	
 	function receive_json($data){

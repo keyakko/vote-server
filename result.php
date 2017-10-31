@@ -30,12 +30,11 @@
 </div>
 
 <div class="container">
-	<div class="row">
-		<div class="col-md-12">
+	<div class="row justify-content-md-center">
+		<div class="col-md-4">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<p>投票の時間遷移</p>
-					<canvas id="graph"></canvas>
+					<canvas id="graph" width="200" height="200"></canvas>
 				</div>
 			</div>
 		</div>
@@ -45,12 +44,21 @@
 		&copy; copyright cosylab all rights reserved.
 	</footer>
 </div>
+
+<!-- chart js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.js"></script>
 <script>
 $(function () {
-	var ctx = $("#graph").getContext("2d");
-	window.myBar = new Chart(ctx, {
-		type: 'bar',
-		data: barChartData,
+	var config = {
+		type: 'doughnut',
+		data: {
+			datasets: [{
+				data: [],
+				backgroundColor: [],
+				label: '投票結果'
+			}],
+			labels: []
+		},
 		options: {
 			responsive: true,
 			legend: {
@@ -58,10 +66,26 @@ $(function () {
 			},
 			title: {
 				display: true,
-				text: 'Chart.js Bar Chart'
+				text: '投票結果'
+			},
+			animation: {
+				animateScale: true,
+				animateRotate: true
 			}
 		}
+	};
+	$.get("api/result.php", function(data) {
+		debugger;
+		config.data.datasets[0].data = data.data;
+		config.data.datasets[0].backgroundColor = data.color;
+		config.data.labels = data.label;
+	}).then(function() {
+		window.myBar.update();
 	});
+
+	var ctx = document.getElementById("graph").getContext("2d");
+	window.myBar = new Chart(ctx, config);
+
 });
 
 </script>
