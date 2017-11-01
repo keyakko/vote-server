@@ -6,8 +6,11 @@ import "net/http"
 
 func post_req(total *int) {
 	_, err := http.PostForm("http://127.0.0.1/voting.php", url.Values{"vote": {"1"}})
-	*total++
-	fmt.Println(err)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		*total++
+	}
 }
 
 func main() {
