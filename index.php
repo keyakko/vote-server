@@ -48,8 +48,9 @@ $info = new info();
 
 <div class="jumbotron">
 	<div class="container">
-		<h1 class="display-3">投票できそう！</h1>
-		<p>投票サイトのテストページです。</p>
+		<h1 class="display-3">終議員選挙投票ページ</h1>
+		<p>日本の未来を決める投票サイトです</p>
+		<p>皆さんの清き一票お願いします！！</p>
 		<p><a class="btn btn-primary btn-lg" href="vote.php" role="button">今すぐ投票する »</a></p>
 	</div>
 </div>

@@ -49,7 +49,7 @@ $vote = new vote();
 
 <div class="jumbotron">
 	<div class="container">
-		<h1 class="display-5">ほげ</h1>
+		<h1 class="display-5">第415回終議員議員葬選挙</h1>
 		<p>投票ページ</p>
 	</div>
 </div>
@@ -66,7 +66,7 @@ $vote = new vote();
 				<div class="panel-body">
 					<form action="voting.php" method="post">
 						<div class="form-group">
-							<label>誰に投票する？</label>
+							<label>比例代表制選挙</label>
 							<select class="form-control" name="vote">
 							
 								<?php if (!empty($vote->sql->users->val)) { ?>

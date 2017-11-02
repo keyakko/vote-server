@@ -24,7 +24,7 @@
 
 <div class="jumbotron">
 	<div class="container">
-		<h1 class="display-5">ほげ</h1>
+		<h1 class="display-5">投票完了</h1>
 		<p>投票ページ</p>
 	</div>
 </div>
