@@ -46,7 +46,7 @@
 </div>
 
 <!-- chart js -->
-<script src="css/Chart.js"></script>
+<script src="js/Chart.js"></script>
 <script>
 $(function () {
 	var config = {
