@@ -46,7 +46,7 @@
 </div>
 
 <!-- chart js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.js"></script>
+<script src="css/Chart.js"></script>
 <script>
 $(function () {
 	var config = {
